@@ -1,0 +1,51 @@
+Problem statement:
+
+A local courier company is struggling to manage parcel bookings, customer information, delivery assignments, and parcel tracking.
+
+Currently, they maintain parcel records manually. Customers frequently contact the company to ask about delivery status, while employees struggle to track which parcels are pending, dispatched, or delivered.
+
+Your task is to build a Courier Management API using FastAPI that digitizes this entire process.
+
+The API should allow customers to book parcels, track shipments, and view their booking history. Employees should be able to manage shipments, update delivery statuses, and monitor courier operations.
+2. Core requirements
+Your application should have these functionalities:
+
+A. Customer management
+- Register new customers.
+- Retrieve customer information.
+- Update customer details.
+- Delete customer accounts (consider existing shipments before deletion).
+
+B. Parcel management
+- Customers can create parcel bookings.
+- Each parcel should have a unique tracking ID.
+- Store sender and receiver information.
+- Store parcel weight, dimensions, pickup address, and destination.
+- Retrieve parcel details.
+
+C. Shipment tracking
+- Customers can track parcels using their tracking ID.
+- Employees can update shipment status.
+- Maintain a history of every status change.
+
+Possible shipment statuses:
+
+BOOKED → PICKED_UP → IN_TRANSIT → OUT_FOR_DELIVERY → DELIVERED
+
+Also handle:
+- CANCELLED
+- FAILED_DELIVERY
+- RETURNED
+
+D. Employee management
+- Register employees.
+- Assign parcels to delivery employees.
+- Retrieve all parcels assigned to a particular employee.
+- Update delivery information.
+
+E. Dashboard / Analytics
+- Total parcels booked.
+- Total delivered parcels.
+- Pending shipments.
+- Failed deliveries.
+- Average delivery time.
