@@ -10,10 +10,15 @@ class Customer(SQLModel, table=True):
 
 
 class Order(SQLModel, table=True):
-    order_id: int | None = Field(default=None, primary_key=True)
+    customer_name: str
+    primary_no: str = Field(min_length=10, max_length=10)
+    alternative_ph_no: str = Field(min_length=10, max_length=10)
+    order_id: int | None = Field(default=None, primary_key=True, foreign_key="shipment.shipment_id")
     quantity: int = Field(le=1, gt=100)
     item_id: int
-    item: str = Field(min_length=2, max_length=100)
+    item_name: str = Field(min_length=2, max_length=100)
+    shipment: "Shipment" = Relationship(back_populates="orders")
+
 
 class Pickup(SQLModel, table=True):
     pickup_id: int | None = Field(default=None, primary_key=True)
@@ -44,6 +49,8 @@ class Shipment(SQLModel, table=True):
 
     shipment_id: int | None = Field(default=None, primary_key=True)
     order_date: datetime = Field(default_factory=datetime.now)
+    orders: "Order" = Relationship(back_populates="shipment")
+
     shipmentHistory: list["ShipmentHistory"] = Relationship(back_populates="shipment")
 
 

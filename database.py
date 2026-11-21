@@ -4,7 +4,7 @@ DATABASE_URL="sqlite:///Curior.db"
 
 engine = create_engine(DATABASE_URL, echo=True)
 
-def create_all():
+def create_table():
     SQLModel.metadata.create_all(engine)
 
 def get_session():
